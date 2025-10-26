@@ -84,7 +84,9 @@ bool symbOpt(char c){
 //for choosing spot(1-9)
 int chooseSpot(const string& p){
     while(true){
-        cout<<p; string s; cin>>s;
+        cout<<p; 
+        string s; 
+        cin>>s;
         if(s.size()==1&&isdigit(static_cast<unsigned char>(s[0]))){
             int v=s[0]-'0'; if(1<=v&&v<=9) return v;
         }
@@ -96,7 +98,9 @@ int chooseSpot(const string& p){
 //asking user for personalized symbols to play
 char getSymb(const string& p){
     while(true){
-        cout<<p; string s; cin>>s;
+        cout<<p; 
+        string s; 
+        cin>>s;
         if(s.size()==1&&symbOpt(s[0])) return s[0];
         cout<<"Invalid. Use A-Z, a-z, ?, !, *, ~, $, %, #.\n";
     }
@@ -107,7 +111,9 @@ char getSymb(const string& p){
 //asking for architype/class
 string architype(const string& p){
     while(true){
-        cout<<p; string s; cin>>s;
+        cout<<p; 
+        string s; 
+        cin>>s;
         for(char& c:s) c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
         if(s=="paladin") return "Paladin";
         if(s=="alchemist") return "Alchemist";
@@ -130,7 +136,9 @@ vector<int> orthoNbrs(int i){
 //code for alchemist archetype
 bool alchemist(vector<char>& b, char mark){
     cout<<"Alchemist: 1) Regular move   2) Ability(Swap 2 marks)\n> ";
-    string s; cin>>s; int ch=(s=="2"?2:1);
+    string s; 
+    cin>>s; 
+    int ch=(s=="2"?2:1);
     if(ch==1){
         while(true){
             int cell=chooseSpot("Put at (1-9): "); 
@@ -175,7 +183,9 @@ bool alchemist(vector<char>& b, char mark){
 //code for paladin archetype
 bool paladin(vector<char>& b, char mark){
     cout<<"Paladin: 1) Regular move   2) Ability(Shift mark)\n> ";
-    string s; cin>>s; int ch=(s=="2"?2:1);
+    string s; 
+    cin>>s; 
+    int ch=(s=="2"?2:1);
     if(ch==1){
         while(true){
             int cell=chooseSpot("Place at (1-9): "); 
@@ -211,10 +221,12 @@ bool paladin(vector<char>& b, char mark){
         }
         cout<<"Choose destination: ["; 
         for(size_t k=0;k<pers.size();++k){ 
-            cout<<pers[k]+1; if(k+1<pers.size()) cout<<","; 
+            cout<<pers[k]+1; 
+            if(k+1<pers.size()) cout<<","; 
         } 
         cout<<"]\n";
-        int to=chooseSpot("To cell: ")-1; bool ok=false; 
+        int to=chooseSpot("To cell: ")-1; 
+        bool ok=false; 
         for(int j:pers) if(j==to) ok=true;
         if(!ok){ 
             cout<<"Destination must be adjacent & empty.\n"; 
@@ -240,7 +252,9 @@ void battle_game(){
     } while(m2==m1);
     string a1=architype(p1+", choose archetype (Paladin/Alchemist): ");
     string a2=architype(p2+", choose archetype (Paladin/Alchemist): ");
-    vector<char> b(9,' '); int turn=0;
+    vector<char> b(9,' '); 
+    int turn=0;
+
     while(true){
         printBoard(b);
         bool used=false;
@@ -252,11 +266,13 @@ void battle_game(){
             used = (a2=="Alchemist"?alchemist(b,m2):paladin(b,m2)); 
         }
         if(checkWin(b, turn%2?m2:m1)){ 
-            printBoard(b); cout<<(turn%2?p2:p1)<<" wins\n"; 
+            printBoard(b); 
+            cout<<(turn%2?p2:p1)<<" wins\n"; 
             return; 
         }
         if(boardCheck(b)){ 
-            printBoard(b); cout<<"Tie.\n"; 
+            printBoard(b); 
+            cout<<"Tie.\n"; 
             return; 
         }
         if(used) turn++;
@@ -267,7 +283,9 @@ void battle_game(){
 //code for answerign question yes or no(like if they want to play again for example)
 bool answerYN(const string& p){
     while(true){
-        cout<<p; string s; cin>>s;
+        cout<<p; 
+        string s; 
+        cin>>s;
         for(char& c:s) c = static_cast<char>(tolower(static_cast<unsigned char>(c)));
         if(s=="y"||s=="yes") return true;
         if(s=="n"||s=="no")  return false;
@@ -280,7 +298,9 @@ bool answerYN(const string& p){
 int main() {
     while (true) {
         cout<<"Welcome to Tic-Tac-Toe!\n1) Regular\n2) Battle\n> ";
-        string s; cin>>s; int ch=(s=="2"?2:1);
+        string s; 
+        cin>>s; 
+        int ch=(s=="2"?2:1);
         if (ch==1) { 
             play_regular(); 
         }else { 
