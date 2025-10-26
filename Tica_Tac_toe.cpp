@@ -281,8 +281,11 @@ int main() {
     while (true) {
         cout<<"Welcome to Tic-Tac-Toe!\n1) Regular\n2) Battle\n> ";
         string s; cin>>s; int ch=(s=="2"?2:1);
-        if (ch==1) { play_regular(); }
-        else       { battle_game(); }
+        if (ch==1) { 
+            play_regular(); 
+        }else { 
+            battle_game(); 
+        }
         if (!answerYN("Play again? (y/n): ")) { 
             cout<<"Thank you for playing!\n"; 
             break; 
